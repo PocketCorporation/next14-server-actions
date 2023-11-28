@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { useInView } from 'react-intersection-observer'
-import { fetchAnime } from '@/app/action';
+import { useInView } from "react-intersection-observer";
+import { fetchAnime } from "@/app/action";
 import AnimeCard, { AnimeProp } from "@/components/AnimeCard";
 
 let page = 2
@@ -14,9 +14,9 @@ function LoadMore() {
 
   useEffect(()=>{
     if(inView){
-          fetchAnime(2)
-            .then((res)=>{
+          fetchAnime(page).then((res)=>{
               setData([...data, ...res])
+              page++
             })
     }
   },[inView, data])
